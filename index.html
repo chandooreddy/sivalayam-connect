@@ -1,1 +1,1653 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sivalayam Youth Contacts</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #121212;
+        color: #f0f0f0;
+      }
 
+      header {
+        background-color: #1f1f1f;
+        padding: 20px;
+        text-align: center;
+        color: #00ffcc;
+        font-size: 1.8em;
+        font-weight: bold;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+      }
+
+      .search-container {
+        padding: 20px;
+        text-align: center;
+      }
+
+      .search-container input {
+        width: 60%;
+        padding: 12px;
+        font-size: 16px;
+        border: 1px solid #555;
+        border-radius: 8px;
+        background-color: #2b2b2b;
+        color: #ffffff;
+        outline: none;
+        transition: border-color 0.3s;
+      }
+
+      .search-container input:focus {
+        border-color: #00ffcc;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .card {
+        background: #1f1f1f;
+        border-radius: 12px;
+        padding: 20px;
+        width: 80%;
+        max-width: 600px;
+        margin-bottom: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 6px 16px rgba(0, 255, 204, 0.2);
+      }
+
+      .card h2 {
+        margin: 0 0 10px;
+        color: #ff9800; /* Updated to a vibrant orange color */
+        font-size: 1.5em;
+      }
+
+      .card p {
+        margin: 6px 0;
+        font-size: 16px;
+        color: #ccc;
+      }
+
+      footer {
+        background: #1f1f1f;
+        color: #888;
+        text-align: center;
+        padding: 15px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        font-size: 14px;
+        border-top: 1px solid #333;
+      }
+
+      @media (max-width: 600px) {
+        .search-container input {
+          width: 90%;
+        }
+
+        .card {
+          width: 90%;
+        }
+      }
+
+      header {
+        background-color: #1f1f1f;
+        padding: 20px;
+        text-align: center;
+        color: #00ffcc;
+        font-size: 1.8em;
+        font-weight: bold;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+      }
+
+      .search-container {
+        padding: 20px;
+        text-align: center;
+      }
+
+      .search-container input {
+        width: 60%;
+        padding: 12px;
+        font-size: 16px;
+        border: 1px solid #555;
+        border-radius: 8px;
+        background-color: #2b2b2b;
+        color: #ffffff;
+        outline: none;
+        transition: border-color 0.3s;
+      }
+
+      .search-container input:focus {
+        border-color: #00ffcc;
+      }
+
+      .controls {
+        text-align: center;
+        margin: 10px 0;
+      }
+
+      .controls button {
+        background-color: #00ffcc;
+        color: #121212;
+        border: none;
+        padding: 10px 16px;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .controls button:hover {
+        background-color: #00ccaa;
+      }
+
+      .member-count {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 1.1em;
+        color: #aaffee;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .card {
+        background: #1f1f1f;
+        border-radius: 12px;
+        padding: 20px;
+        width: 80%;
+        max-width: 600px;
+        margin-bottom: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 6px 16px rgba(0, 255, 204, 0.2);
+      }
+
+      .card h2 {
+        margin: 0 0 10px;
+        color: #ff9800;
+        font-size: 1.5em;
+      }
+
+      .card p {
+        margin: 6px 0;
+        font-size: 16px;
+        color: #ccc;
+      }
+
+      footer {
+        background: #1f1f1f;
+        color: #888;
+        text-align: center;
+        padding: 15px;
+        font-size: 14px;
+        border-top: 1px solid #333;
+      }
+
+      #scrollTopBtn {
+        display: none;
+        position: fixed;
+        bottom: 80px;
+        right: 30px;
+        z-index: 100;
+        font-size: 20px;
+        border: none;
+        outline: none;
+        background-color: #00ffcc;
+        color: #121212;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 50%;
+        box-shadow: 0 0 10px #00ffcc;
+      }
+
+      #scrollTopBtn:hover {
+        background-color: #00ccaa;
+      }
+
+      @media (max-width: 600px) {
+        .search-container input {
+          width: 90%;
+        }
+
+        .card {
+          width: 90%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>Sivalayam Youth Contact Info</header>
+
+    <div class="search-container">
+      <input
+        type="text"
+        id="searchBar"
+        onkeyup="searchContacts()"
+        placeholder="Search by name, or mobile..."
+      />
+    </div>
+
+    <div class="member-count">
+      Total Members: <span id="memberCount">0</span>
+    </div>
+
+    <div class="container" id="contactList">
+      <div class="card">
+        <h2>Devarapalli Ravi Chandra</h2>
+        <p><strong>Role:</strong> Gang Leader</p>
+        <p>
+          <strong>Mobile:</strong> 9912188975
+          <a
+            href="tel:9912188975"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/ravichandra4554"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i></a
+          ><a
+            href="https://wa.me/919912188975"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Danda Pavan</h2>
+        <p>
+          <strong>Mobile:</strong> 9059140050
+          <a
+            href="tel:9059140050"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/pavanreddydanda"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/919059140050"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Gunnamreddy Dayakar</h2>
+        <p>
+          <strong>Mobile:</strong> 9491119202
+          <a
+            href="tel:9491119202"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/motivate__boy_daya"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/919491119202"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Sure Ramesh</h2>
+        <p>
+          <strong>Mobile:</strong> 8019310927
+          <a
+            href="tel:8019310927"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/sure_ramesh_reddy/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/918019310927"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Devarapalli Prasanth</h2>
+        <p>
+          <strong>Mobile:</strong> 9032477772
+          <a
+            href="tel:9032477772"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/reddydprasanth/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/919032477772"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Sangana Venkateswarlu</h2>
+        <p>
+          <strong>Mobile:</strong> 8328312333
+          <a
+            href="tel:8328312333"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/sanganavenkateswarlu/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/918328312333"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Danda Sathish</h2>
+        <p>
+          <strong>Mobile:</strong> 8309613597
+          <a
+            href="tel:8309613597"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/sathishreddy7186/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/918309613597"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Pulugunta Subbareddy</h2>
+        <p>
+          <strong>Mobile:</strong> 8121293089
+          <a
+            href="tel:8121293089"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/subbareddy1106/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/918121293089"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Vaka Venkateswarlu</h2>
+        <p>
+          <strong>Mobile:</strong> 6300223970
+          <a
+            href="tel:6300223970"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/venkyreddyvaka/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/916300223970"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Konduru Vinay</h2>
+        <p>
+          <strong>Mobile:</strong> 7093956730
+          <a
+            href="tel:7093956730"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/vinayreddykonduru/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/917093956730"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Devarapalli Thiloth</h2>
+        <p>
+          <strong>Mobile:</strong> 9182631571
+          <a
+            href="tel:9182631571"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/thiloth_reddy/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/919182631571"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Konduru Rajesh</h2>
+        <p>
+          <strong>Mobile:</strong> 9966314158
+          <a
+            href="tel:9966314158"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/rajeshreddy754/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/919966314158"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Chejarla Murali Mohan</h2>
+        <p>
+          <strong>Mobile:</strong> 9398621513
+          <a
+            href="tel:9398621513"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/murali_mohan_reddy_chejerla/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/919398621513"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Muchala Bhanu Prakash</h2>
+        <p>
+          <strong>Mobile:</strong> 8985700321
+          <a
+            href="tel:8985700321"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/_its_me_bhanu__/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/918985700321"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Kurapati Nithish</h2>
+        <p>
+          <strong>Mobile:</strong> 8688601439
+          <a
+            href="tel:8688601439"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/_.nithishreddy_24._/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/918688601439"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Vaka Jeshwanth</h2>
+        <p>
+          <strong>Mobile:</strong> 6304422027
+          <a
+            href="tel:6304422027"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/vakajaswanth/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/916304422027"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Vaka Vishnu</h2>
+        <p>
+          <strong>Mobile:</strong> 9398615386
+          <a
+            href="tel:9398615386"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/vishnureddy3189/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/919398615386"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Vaka Prasanth</h2>
+        <p>
+          <strong>Mobile:</strong> 9010896019
+          <a
+            href="tel:9010896019"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/prasanthreddy_ysrcp/following/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/919010896019"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Pulimi Vishnu</h2>
+        <p>
+          <strong>Mobile:</strong> 6304651803
+          <a
+            href="tel:6304651803"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/vishnureddi_66_/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/916304651803"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Pulimi Ramesh</h2>
+        <p>
+          <strong>Mobile:</strong> 9014246679
+          <a
+            href="tel:9014246679"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/pulimi_ramesh/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/919014246679"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Velamuri Siva</h2>
+        <p>
+          <strong>Mobile:</strong> 7989702688
+          <a
+            href="tel:7989702688"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/_____shiva____reddy/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/917989702688"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Vaka Pavan Kalyan</h2>
+        <p>
+          <strong>Mobile:</strong> 9492557776
+          <a
+            href="tel:9492557776"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/pavan_kalyan_vaka/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/919492557776"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Devarapalli Rohith</h2>
+        <p>
+          <strong>Mobile:</strong> 6300410732
+          <a
+            href="tel:6300410732"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/randy.rohith/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/916300410732"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Sanneboina Venkateswarlu</h2>
+        <p>
+          <strong>Mobile:</strong> 9573055040
+          <a
+            href="tel:9573055040"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/jst__call__me__venky__/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/919573055040"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Kurapati Bargav</h2>
+        <p>
+          <strong>Mobile:</strong> 9110789173
+          <a
+            href="tel:9110789173"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/_vijay__reddy_999_/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/919110789173"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Mallavarapu Mani</h2>
+        <p>
+          <strong>Mobile:</strong> 8186090381
+          <a
+            href="tel:8186090381"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/urs_truly_mani/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/918186090381"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Ramala Manideep</h2>
+        <p>
+          <strong>Mobile:</strong> 8985391246
+          <a
+            href="tel:8985391246"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/ramalamanideep/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/918985391246"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Ramala Dinesh</h2>
+        <p>
+          <strong>Mobile:</strong> 9640741705
+          <a
+            href="tel:9640741705"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/dinesh_reddy_705/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/919640741705"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Ramala Vinay</h2>
+        <p>
+          <strong>Mobile:</strong> 8106887815
+          <a
+            href="tel:8106887815"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/ramala.reddy/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/919640741705"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Bommareddy Premchand</h2>
+        <p><strong>Role:</strong> Portal Admin</p>
+        <p>
+          <strong>Mobile:</strong> 7661036463
+          <a
+            href="tel:7661036463"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/call_me___chandu/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/917661036463"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Pulimi Vamsi</h2>
+        <p>
+          <strong>Mobile:</strong> 9502050784
+          <a
+            href="tel:9502050784"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/vamsi__reddy___09/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/919502050784"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Muchala Surya Prakash</h2>
+        <p>
+          <strong>Mobile:</strong> 8985396321
+          <a
+            href="tel:8985396321"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/surya_prakash_reddy_2002/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/918985396321"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Vaka Harsha Vardhan</h2>
+        <p>
+          <strong>Mobile:</strong> 9014121301
+          <a
+            href="tel:9014121301"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/harsha__reddy2/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/919014121301"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Kurapati Sainadh</h2>
+        <p>
+          <strong>Mobile:</strong> 6304509366
+          <a
+            href="tel:6304509366"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/sainath4601/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/916304509366"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Dagumati Manjunadh</h2>
+        <p>
+          <strong>Mobile:</strong> 9573074386
+          <a
+            href="tel:9573074386"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/manjunathreddy4386/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/919573074386"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Kancharla Vivek</h2>
+        <p>
+          <strong>Mobile:</strong> 8520074838
+          <a
+            href="tel:8520074838"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/vivekkancharla_/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/918520074838"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Kurapati Srinu</h2>
+        <p>
+          <strong>Mobile:</strong> 9848468931
+          <a
+            href="tel:9848468931"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/srinu_reddy.k/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i>
+          </a>
+          <a
+            href="https://wa.me/919848468931"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Vaka Kowshik</h2>
+        <p>
+          <strong>Mobile:</strong> 6304663707
+          <a
+            href="tel:6304663707"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/koushik.reddy.1043/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/916304663707"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Kurapati Syam</h2>
+        <p>
+          <strong>Mobile:</strong> 8328560233
+          <a
+            href="tel:8328560233"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/mr_syam_reddy/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/918328560233"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Vaka Uday</h2>
+        <p>
+          <strong>Mobile:</strong> 6303305886
+          <a
+            href="tel:6303305886"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/udhay_reddy_vaka/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/916303305886"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Kurapati OM Prakash</h2>
+        <p>
+          <strong>Mobile:</strong> 9063021908
+          <a
+            href="tel:9063021908"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/prakash__reddy_46/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/919063021908"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Vallamreddy Jeshwanth</h2>
+        <p>
+          <strong>Mobile:</strong> 8978054378
+          <a
+            href="tel:8978054378"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/jaswanth_reddy_2002/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/918978054378"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Konduru Mani Sai</h2>
+        <p>
+          <strong>Mobile:</strong> 6300132229
+          <a
+            href="tel:6300132229"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/sai__reddy_143_/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/916300132229"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Akula Hari Sampath</h2>
+        <p>
+          <strong>Mobile:</strong> 6302635532
+          <a
+            href="tel:6302635532"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/harisampth2000/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/916302635532"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Sure Hemanth</h2>
+        <p>
+          <strong>Mobile:</strong> 6303649448
+          <a
+            href="tel:6303649448"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/hemanthreddysure/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/916303649448"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Vallamreddy Hemanth</h2>
+        <p>
+          <strong>Mobile:</strong> 9121367761
+          <a
+            href="tel:9121367761"
+            style="text-decoration: none; color: #00ffcc; margin-left: 50px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/hemanth_reddy__07/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://wa.me/919121367761"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <div class="card">
+        <h2>Thugs Of Jaladanki - Generic ID</h2>
+        <p><strong>Role:</strong> Social Media Strategist</p>
+        <p>
+          <strong>Mobile:</strong> 944*******
+          <a
+            href="tel:944*******"
+            style="text-decoration: none; color: #00ffcc; margin-left: 65px"
+            title="Call"
+            ><span style="font-size: 1.2em">📞</span></a
+          >
+          <a
+            href="https://www.instagram.com/thugs_of_jaladanki/"
+            target="_blank"
+            style="text-decoration: none; color: #e1306c; margin-left: 20px"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram" style="font-size: 1.2em"></i
+          ></a>
+          <a
+            href="https://chat.whatsapp.com/HROuxCXcX4KDLPVI8rFzKs"
+            target="_blank"
+            style="text-decoration: none; color: #25d366; margin-left: 20px"
+            title="Join WhatsApp Group"
+          >
+            <i class="fab fa-whatsapp" style="font-size: 1.2em"></i
+          ></a>
+        </p>
+      </div>
+      <!-- Add more cards below if needed -->
+    </div>
+    <!-- Add this in your HTML <head> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <footer>Sivalayam Youth - All rights reserved</footer>
+
+    <button onclick="scrollToTop()" id="scrollTopBtn" title="Go to top">
+      ↑
+    </button>
+
+    <script>
+      function searchContacts() {
+        let input = document.getElementById("searchBar").value.toLowerCase();
+        let cards = document
+          .getElementById("contactList")
+          .getElementsByClassName("card");
+        let visibleCount = 0;
+
+        Array.from(cards).forEach(function (card) {
+          let content = card.innerText.toLowerCase();
+          if (content.includes(input)) {
+            card.style.display = "";
+            visibleCount++;
+          } else {
+            card.style.display = "none";
+          }
+        });
+
+        document.getElementById("memberCount").textContent = visibleCount;
+      }
+
+      function updateTotalCount() {
+        const total = document.querySelectorAll("#contactList .card").length;
+        document.getElementById("memberCount").textContent = total;
+      }
+
+      function exportToCSV() {
+        let rows = [["Name", "Mobile"]];
+        const cards = document.querySelectorAll(".card");
+
+        cards.forEach((card) => {
+          const name = card.querySelector("h2").textContent;
+          const mobile = card
+            .querySelector("p")
+            .textContent.replace("Mobile:", "")
+            .trim();
+          rows.push([name, mobile]);
+        });
+
+        let csvContent =
+          "data:text/csv;charset=utf-8," +
+          rows.map((e) => e.join(",")).join("\n");
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "sivalayam_contacts.csv");
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      window.onscroll = function () {
+        document.getElementById("scrollTopBtn").style.display =
+          document.body.scrollTop > 100 ||
+          document.documentElement.scrollTop > 100
+            ? "block"
+            : "none";
+      };
+
+      window.onload = updateTotalCount;
+    </script>
+  </body>
+</html>
