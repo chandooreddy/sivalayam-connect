@@ -40,6 +40,258 @@ body::before{
     repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,0.015) 40px);
 }
 
+/* HAMBURGER MENU */
+.hamburger-btn{
+  position:fixed;top:14px;left:16px;z-index:200;
+  width:42px;height:42px;border-radius:6px;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  cursor:pointer;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:5px;
+  transition:all .2s;
+}
+.hamburger-btn:hover{border-color:var(--accent);background:rgba(200,134,10,0.12);}
+.hamburger-btn span{
+  display:block;width:18px;height:2px;
+  background:var(--accent2);border-radius:2px;
+  transition:all .25s;
+}
+.hamburger-btn.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger-btn.active span:nth-child(2){opacity:0;}
+.hamburger-btn.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* SIDE DRAWER */
+.side-drawer{
+  position:fixed;top:0;left:0;z-index:190;
+  width:280px;height:100vh;
+  background:var(--surface);
+  border-right:1px solid var(--border);
+  box-shadow:6px 0 30px rgba(0,0,0,0.6);
+  transform:translateX(-100%);
+  transition:transform .3s cubic-bezier(.4,0,.2,1);
+  display:flex;flex-direction:column;
+  overflow:hidden;
+}
+.side-drawer.open{transform:translateX(0);}
+
+.drawer-header{
+  padding:20px 20px 16px;
+  background:linear-gradient(135deg,rgba(200,134,10,0.12),rgba(200,134,10,0.04));
+  border-bottom:1px solid var(--border);
+  flex-shrink:0;
+}
+.drawer-title{
+  font-family:'Cinzel',serif;font-size:13px;font-weight:700;
+  color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;
+  margin-top:8px;
+}
+.drawer-sub{font-size:11px;color:var(--muted);margin-top:3px;letter-spacing:.5px;}
+
+.drawer-menu{padding:12px 0;overflow-y:auto;flex:1;}
+.drawer-section-label{
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--muted);padding:10px 20px 6px;
+}
+
+.drawer-item{
+  display:flex;align-items:center;gap:12px;
+  padding:13px 20px;cursor:pointer;
+  transition:all .18s;border-left:3px solid transparent;
+  text-decoration:none;
+}
+.drawer-item:hover{
+  background:rgba(200,134,10,0.07);
+  border-left-color:var(--accent);
+}
+.drawer-item.active{
+  background:rgba(200,134,10,0.12);
+  border-left-color:var(--gold);
+}
+.drawer-item-icon{
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(200,134,10,0.1);
+  border:1px solid rgba(200,134,10,0.22);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;color:var(--accent2);flex-shrink:0;
+}
+.drawer-item-text{}
+.drawer-item-name{
+  font-family:'Cinzel',serif;font-size:12px;font-weight:600;
+  color:var(--text);
+}
+.drawer-item-desc{font-size:10px;color:var(--muted);margin-top:1px;}
+
+/* Submenu years */
+.drawer-sub-items{
+  overflow:hidden;
+  max-height:0;
+  transition:max-height .3s ease;
+}
+.drawer-sub-items.expanded{max-height:300px;}
+.drawer-year-item{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 20px 10px 56px;
+  cursor:pointer;transition:all .18s;
+  border-left:3px solid transparent;
+}
+.drawer-year-item:hover{
+  background:rgba(200,134,10,0.07);
+  border-left-color:var(--accent);
+}
+.drawer-year-badge{
+  font-size:12px;font-weight:600;color:var(--accent2);
+  font-family:'Cinzel',serif;
+}
+.drawer-year-arrow{
+  margin-left:auto;font-size:10px;color:var(--muted);
+  transition:transform .2s;
+}
+.drawer-item.open-sub .drawer-year-arrow{transform:rotate(180deg);}
+
+/* OVERLAY */
+.drawer-overlay{
+  position:fixed;inset:0;z-index:180;
+  background:rgba(0,0,0,0.55);
+  opacity:0;pointer-events:none;
+  transition:opacity .3s;
+}
+.drawer-overlay.visible{opacity:1;pointer-events:all;}
+
+/* EXPENSES MODAL */
+.expenses-modal-bg{
+  display:none;position:fixed;inset:0;z-index:300;
+  background:rgba(0,0,0,0.82);backdrop-filter:blur(6px);
+  align-items:flex-start;justify-content:center;
+  padding:20px;overflow-y:auto;
+}
+.expenses-modal-bg.open{display:flex;}
+.expenses-modal{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:10px;
+  width:100%;max-width:680px;
+  margin:auto;
+  position:relative;
+  animation:fadeUp .25s ease both;
+  overflow:hidden;
+}
+.exp-modal-header{
+  background:linear-gradient(135deg,rgba(200,134,10,0.18),rgba(200,134,10,0.06));
+  padding:22px 24px 18px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:flex-start;gap:14px;
+}
+.exp-modal-icon{
+  width:44px;height:44px;border-radius:50%;flex-shrink:0;
+  background:rgba(200,134,10,0.15);border:1px solid rgba(200,134,10,0.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;
+}
+.exp-modal-title{
+  font-family:'Cinzel',serif;font-size:18px;font-weight:700;
+  color:var(--gold);line-height:1.2;
+}
+.exp-modal-subtitle{font-size:12px;color:var(--muted);margin-top:4px;letter-spacing:.5px;}
+.exp-modal-close{
+  position:absolute;top:14px;right:16px;
+  background:none;border:none;color:var(--muted);
+  font-size:18px;cursor:pointer;transition:color .2s;
+}
+.exp-modal-close:hover{color:var(--text);}
+
+.exp-modal-body{padding:20px 24px 24px;}
+
+/* Expense Table */
+.exp-table-wrap{overflow-x:auto;margin-bottom:20px;}
+.exp-table{
+  width:100%;border-collapse:collapse;
+  font-size:14px;
+}
+.exp-table thead tr{
+  background:rgba(200,134,10,0.12);
+}
+.exp-table th{
+  padding:10px 14px;text-align:left;
+  font-family:'Cinzel',serif;font-size:11px;
+  font-weight:600;letter-spacing:1px;
+  color:var(--accent2);text-transform:uppercase;
+  border-bottom:2px solid rgba(200,134,10,0.25);
+}
+.exp-table th:last-child{text-align:right;}
+.exp-table td{
+  padding:9px 14px;
+  border-bottom:1px solid var(--border);
+  color:var(--text);font-size:13px;
+}
+.exp-table td:last-child{text-align:right;font-weight:600;color:var(--accent2);}
+.exp-table tr:hover td{background:rgba(200,134,10,0.04);}
+.exp-table tfoot td{
+  padding:11px 14px;
+  border-top:2px solid rgba(200,134,10,0.3);
+  font-family:'Cinzel',serif;font-weight:700;
+  font-size:14px;color:var(--gold);
+  background:rgba(200,134,10,0.08);
+}
+.exp-table tfoot td:last-child{text-align:right;}
+
+/* Summary box */
+.exp-summary{
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:8px;
+  overflow:hidden;
+  margin-bottom:16px;
+}
+.exp-summary-title{
+  background:rgba(200,134,10,0.12);
+  padding:10px 16px;
+  font-family:'Cinzel',serif;font-size:12px;font-weight:700;
+  color:var(--accent2);letter-spacing:1px;text-transform:uppercase;
+  border-bottom:1px solid var(--border);
+}
+.exp-summary-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:9px 16px;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  font-size:13px;
+}
+.exp-summary-row:last-child{border-bottom:none;}
+.exp-summary-row.highlight{
+  background:rgba(200,134,10,0.1);
+}
+.exp-summary-row.highlight .exp-sum-val{
+  color:var(--gold);font-weight:700;font-size:14px;
+}
+.exp-sum-label{color:var(--muted);}
+.exp-sum-val{font-weight:600;color:var(--accent2);}
+
+/* Note box */
+.exp-note{
+  background:rgba(200,134,10,0.06);
+  border:1px solid rgba(200,134,10,0.2);
+  border-radius:6px;
+  padding:12px 16px;
+  margin-top:14px;
+}
+.exp-note-title{
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:8px;font-weight:700;
+}
+.exp-note-row{
+  font-size:12px;color:var(--text);margin-bottom:4px;
+  padding-left:8px;border-left:2px solid var(--accent);
+  line-height:1.5;
+}
+
+/* No data */
+.exp-no-data{
+  text-align:center;padding:50px 20px;
+  color:var(--muted);
+}
+.exp-no-data i{font-size:2.5rem;display:block;margin-bottom:14px;color:var(--border);}
+.exp-no-data h3{font-family:'Cinzel',serif;font-size:16px;color:var(--muted);margin-bottom:8px;}
+.exp-no-data p{font-size:13px;}
+
 /* HEADER */
 header{
   position:relative;z-index:10;
@@ -313,10 +565,85 @@ footer{
   .add-btn{width:100%;justify-content:center;}
   .grid{padding:16px 12px 100px;gap:12px;}
   .chatbox{width:calc(100vw - 32px);left:16px;}
+  .expenses-modal{margin:10px auto;}
 }
 </style>
 </head>
 <body>
+
+<!-- HAMBURGER BUTTON (top left) -->
+<button class="hamburger-btn" id="hamburgerBtn" onclick="toggleDrawer()" title="Menu">
+  <span></span><span></span><span></span>
+</button>
+
+<!-- OVERLAY -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+
+<!-- SIDE DRAWER -->
+<div class="side-drawer" id="sideDrawer">
+  <div class="drawer-header">
+    <div style="font-size:1.5rem;">🪔</div>
+    <div class="drawer-title">Sivalayam Youth</div>
+    <div class="drawer-sub">Jaladanki · Menu</div>
+  </div>
+  <div class="drawer-menu">
+    <div class="drawer-section-label">Navigation</div>
+    <a class="drawer-item active" onclick="closeDrawer()">
+      <div class="drawer-item-icon"><i class="fas fa-users" style="font-size:13px"></i></div>
+      <div class="drawer-item-text">
+        <div class="drawer-item-name">Contact Directory</div>
+        <div class="drawer-item-desc">All member contacts</div>
+      </div>
+    </a>
+
+    <div class="drawer-section-label">Vinayaka Chavithi</div>
+    <div class="drawer-item" id="expParent" onclick="toggleExpSub()">
+      <div class="drawer-item-icon"><i class="fas fa-rupee-sign" style="font-size:13px"></i></div>
+      <div class="drawer-item-text">
+        <div class="drawer-item-name">Expenses</div>
+        <div class="drawer-item-desc">Year-wise financial records</div>
+      </div>
+      <i class="fas fa-chevron-down drawer-year-arrow" id="expArrow"></i>
+    </div>
+    <div class="drawer-sub-items" id="expSubItems">
+      <div class="drawer-year-item" onclick="openExpenses(2022)">
+        <div class="drawer-item-icon" style="width:26px;height:26px;font-size:11px">📋</div>
+        <span class="drawer-year-badge">2022</span>
+        <span style="font-size:11px;color:var(--muted);margin-left:6px;">Vinayaka Chavithi</span>
+      </div>
+      <div class="drawer-year-item" onclick="openExpenses(2023)">
+        <div class="drawer-item-icon" style="width:26px;height:26px;font-size:11px">📋</div>
+        <span class="drawer-year-badge">2023</span>
+        <span style="font-size:11px;color:var(--muted);margin-left:6px;">Vinayaka Chavithi</span>
+      </div>
+      <div class="drawer-year-item" onclick="openExpenses(2024)">
+        <div class="drawer-item-icon" style="width:26px;height:26px;font-size:11px">📋</div>
+        <span class="drawer-year-badge">2024</span>
+        <span style="font-size:11px;color:var(--muted);margin-left:6px;">Vinayaka Chavithi</span>
+      </div>
+      <div class="drawer-year-item" onclick="openExpenses(2025)">
+        <div class="drawer-item-icon" style="width:26px;height:26px;font-size:11px">📋</div>
+        <span class="drawer-year-badge">2025</span>
+        <span style="font-size:11px;color:var(--muted);margin-left:6px;">Vinayaka Chavithi</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPENSES MODAL -->
+<div class="expenses-modal-bg" id="expensesModalBg" onclick="bgCloseExp(event)">
+  <div class="expenses-modal" id="expensesModal">
+    <button class="exp-modal-close" onclick="closeExpenses()"><i class="fas fa-times"></i></button>
+    <div class="exp-modal-header">
+      <div class="exp-modal-icon">🪔</div>
+      <div>
+        <div class="exp-modal-title" id="expModalTitle">Vinayaka Chavithi Expenses</div>
+        <div class="exp-modal-subtitle" id="expModalSub">Financial Records — Jaladanki Sivalayam Youth</div>
+      </div>
+    </div>
+    <div class="exp-modal-body" id="expModalBody"></div>
+  </div>
+</div>
 
 <!-- HEADER -->
 <header>
@@ -385,13 +712,13 @@ footer{
   <div class="modal">
     <button class="modal-x" onclick="closeModal()"><i class="fas fa-times"></i></button>
     <h2>Add / Update Member</h2>
-    <div class="modal-sub">Your details will be sent to thugsofjaladanki@gmail.com</div>
+    <div class="modal-sub">Your details will be sent to the admin.</div>
     <label>Full Name</label>
     <input type="text" id="mName" placeholder="Your Name"/>
     <label>Mobile Number</label>
-    <input type="tel" id="mPhone" placeholder="Your Phone Number"/>
+    <input type="tel" id="mPhone" placeholder="Your Number"/>
     <label>Instagram Username (optional)</label>
-    <input type="text" id="mInsta" placeholder="Your Instagram Username"/>
+    <input type="text" id="mInsta" placeholder="Insta Username"/>
     <div class="modal-btns">
       <button class="btn-submit" onclick="sendMail()">Send Details</button>
       <button class="btn-cancel2" onclick="closeModal()">Cancel</button>
@@ -465,6 +792,208 @@ var members = [
   {n:"Nunna Vikas",               p:"8919868079", ig:"vicky_the_badboy"},
   {n:"Thugs Of Jaladanki",        p:"",           ig:"thugs_of_jaladanki", wa:true, r:"Social Media · Group Link"}
 ];
+
+/* ─── EXPENSES DATA ─── */
+var expensesData = {
+  2022: {
+    title: "Vinayaka Chavithi Expenses — 2022",
+    items: [
+      {s:1,  name:"Tenali Band",            amount:45000},
+      {s:2,  name:"Flower Decoration",      amount:27500},
+      {s:3,  name:"Teen Maar",              amount:25000},
+      {s:4,  name:"Stage Decoration",       amount:7000},
+      {s:5,  name:"Laddu",                  amount:3000},
+      {s:6,  name:"Adithi",                 amount:1000},
+      {s:7,  name:"Vanta Vallaki",          amount:9500},
+      {s:8,  name:"Diesel",                 amount:5000},
+      {s:9,  name:"Police Permission",      amount:6000},
+      {s:10, name:"Dolu & Sannai",          amount:4500},
+      {s:11, name:"Karra Pattina Vallaki",  amount:2400},
+      {s:12, name:"Kagada Vallaki",         amount:700},
+      {s:13, name:"Annadanam Karchu",       amount:15000},
+      {s:14, name:"Vilakar ki (Reporter)",  amount:1000},
+      {s:15, name:"Chimmina Vallaki",       amount:1000},
+      {s:16, name:"Poojariki",              amount:6000},
+      {s:17, name:"Chillara Karchu",        amount:3187},
+      {s:18, name:"Water Karchu",           amount:2000},
+      {s:19, name:"Lighting",              amount:15000}
+    ],
+    total: 179787,
+    summary: [
+      {label:"Laddu Pata Dabbulu — 2021",    value:"₹18,000",  highlight:false},
+      {label:"Laddu Pata Vaddi Dabbulu — 2021", value:"₹4,320", highlight:false},
+      {label:"2022 — Total Chandha",         value:"₹1,91,467", highlight:false},
+      {label:"Total Opening Balance — 2022", value:"₹2,13,787", highlight:true},
+      {label:"2022 — Expenses (Karchulu)",   value:"₹1,79,787", highlight:false},
+      {label:"Closing Balance (Migulu) — 2022", value:"₹34,000", highlight:true}
+    ],
+    notes: [
+      "₹34,000 — Given to Temple Development",
+      "Laddu Pata — 2022 (Veeraddigari Madhu) — ₹27,000 — Need to pay ₹33,500"
+    ]
+  },
+  2023: null,
+  2024: {
+    title: "Vinayaka Chavithi Expenses — 2024",
+    items: [
+      {s:1,    name:"DJ",                                  amount:62000},
+      {s:"11/12", name:"First Day Annadanam Kharchu",      amount:26500},
+      {s:3,    name:"Flower Decoration",                    amount:36000},
+      {s:4,    name:"Stage Decoration",                    amount:7000},
+      {s:5,    name:"Police Department Challans",          amount:23000},
+      {s:7,    name:"Dolu Sannai",                         amount:5000},
+      {s:8,    name:"Karra Pattina Vallaki",               amount:3000},
+      {s:9,    name:"Kagada Vaari",                        amount:1000},
+      {s:10,   name:"Vanta Chesina Vallaki",               amount:15000},
+      {s:11,   name:"Poojariki",                           amount:6000},
+      {s:12,   name:"Lighting",                            amount:18000},
+      {s:13,   name:"Nallmandu (vigraham Tisukkunna Roju)", amount:1000},
+      {s:14,   name:"Chimmina Vallaki",                    amount:4000},
+      {s:15,   name:"Second Day Annadanam Kharchu",        amount:28300},
+      {s:16,   name:"Edla Pandem Dagara Kharchu",          amount:24920},
+      {s:18,   name:"Kolatam",                             amount:10000},
+      {s:19,   name:"Edla Pandem Dagara Karra Badina Vallaki", amount:4800},
+      {s:20,   name:"Aditi Vallaki",                       amount:2740},
+      {s:21,   name:"Diesel",                              amount:3000},
+      {s:22,   name:"Teen Maar Vallaki",                   amount:37000},
+      {s:23,   name:"Rangulu",                             amount:3000}
+    ],
+    total: 321260,
+    summary: [
+      {label:"Laddu Pata Dabbulu — 2023",    value:"₹37,000",   highlight:false},
+      {label:"Laddu Pata Vaddi Dabbulu — 2023", value:"₹8,880", highlight:false},
+      {label:"Migulu — 2023",                value:"₹30,000",   highlight:false},
+      {label:"Migulu Vaddi — 2023",          value:"₹7,200",    highlight:false},
+      {label:"2024 — Mottam Chandha",        value:"₹2,47,491", highlight:false},
+      {label:"Total Amount — 2024",          value:"₹3,30,571", highlight:true},
+      {label:"2024 — Kharchu",               value:"₹3,21,260", highlight:false},
+      {label:"Migulu — 2024",                value:"₹9,311",    highlight:true}
+    ],
+    notes: []
+  },
+  2025: {
+    title: "Vinayaka Chavithi Expenses — 2025",
+    items: [
+      {s:1,  name:"Gudi Rangulu",                           amount:5000},
+      {s:2,  name:"DJ",                                     amount:27000},
+      {s:3,  name:"Flower Decoration",                       amount:34000},
+      {s:4,  name:"Stage Decoration",                       amount:7000},
+      {s:5,  name:"Police Challan",                         amount:10000},
+      {s:6,  name:"Dolu Sannai",                            amount:6000},
+      {s:7,  name:"Karra Pattina Vallaki",                  amount:3000},
+      {s:8,  name:"Kagada Vaari",                           amount:1000},
+      {s:9,  name:"Vanta Chesina Vallaki",                  amount:13000},
+      {s:10, name:"Poojariki",                              amount:7000},
+      {s:11, name:"Lighting",                               amount:15500},
+      {s:12, name:"Nallamandu",                             amount:13000},
+      {s:13, name:"Annadanam Kharchu",                      amount:25100},
+      {s:14, name:"Edla Pandem Dagara Kharchu",             amount:8500},
+      {s:15, name:"Edla Pandem Dagara Stage and Lights",    amount:8000},
+      {s:16, name:"Aditi Vallaki",                          amount:1500},
+      {s:17, name:"Diesel",                                 amount:4000},
+      {s:18, name:"Teen Maar Vallaki",                      amount:36000},
+      {s:19, name:"Rangulu",                                amount:3000},
+      {s:20, name:"Prasadam Laddu (10kg)",                  amount:2200},
+      {s:21, name:"Water Kharchu",                          amount:2000}
+    ],
+    total: 231800,
+    summary: [
+      {label:"Laddu Pata Dabbulu — 2024",    value:"₹35,000",   highlight:false},
+      {label:"Laddu Pata Vaddi Dabbulu — 2024", value:"₹8,400", highlight:false},
+      {label:"Migulu — 2024",                value:"₹9,000",    highlight:false},
+      {label:"Migulu Vaddi — 2024",          value:"₹2,160",    highlight:false},
+      {label:"2025 — Mottam Chandha",        value:"₹1,83,135", highlight:false},
+      {label:"Total Amount — 2025",          value:"₹2,37,695", highlight:true},
+      {label:"2025 — Kharchu",               value:"₹2,31,800", highlight:false},
+      {label:"Migulu — 2025",                value:"₹5,895",    highlight:true}
+    ],
+    notes: [
+      "Migulu-2025 Overview",
+      "₹3,000 — Devarapalli Ravichandra Reddy",
+      "₹1,000 — Pulimi Ramesh Reddy",
+      "₹1,000 — Ramala Dinesh Reddy",
+      "₹1,000 — Bommareddy PremChand Reddy",
+      "Laddu Pata — 2025 (SV Youth) — ₹25,000"
+    ]
+  }
+};
+
+/* ─── DRAWER ─── */
+function toggleDrawer(){
+  var d = document.getElementById('sideDrawer');
+  var o = document.getElementById('drawerOverlay');
+  var b = document.getElementById('hamburgerBtn');
+  var isOpen = d.classList.contains('open');
+  if(isOpen){ closeDrawer(); }
+  else {
+    d.classList.add('open');
+    o.classList.add('visible');
+    b.classList.add('active');
+  }
+}
+function closeDrawer(){
+  document.getElementById('sideDrawer').classList.remove('open');
+  document.getElementById('drawerOverlay').classList.remove('visible');
+  document.getElementById('hamburgerBtn').classList.remove('active');
+}
+function toggleExpSub(){
+  var sub = document.getElementById('expSubItems');
+  var parent = document.getElementById('expParent');
+  sub.classList.toggle('expanded');
+  parent.classList.toggle('open-sub');
+}
+
+/* ─── EXPENSES MODAL ─── */
+function fmt(n){ return '₹' + n.toLocaleString('en-IN'); }
+
+function openExpenses(year){
+  closeDrawer();
+  var data = expensesData[year];
+  document.getElementById('expModalTitle').textContent = data ? data.title : ('Vinayaka Chavithi Expenses — ' + year);
+  document.getElementById('expModalSub').textContent = 'Financial Records — Jaladanki Sivalayam Youth';
+  var body = document.getElementById('expModalBody');
+
+  if(!data){
+    body.innerHTML =
+      '<div class="exp-no-data">' +
+        '<i class="fas fa-folder-open"></i>' +
+        '<h3>Data Not Available</h3>' +
+        '<p>Records for <strong>' + year + '</strong> are currently not available.<br>Please check back later or contact the admin.</p>' +
+      '</div>';
+  } else {
+    var rows = data.items.map(function(it){
+      return '<tr><td style="color:var(--muted);width:36px">' + it.s + '</td><td>' + it.name + '</td><td>' + fmt(it.amount) + '</td></tr>';
+    }).join('');
+    var sumRows = data.summary.map(function(r){
+      return '<div class="exp-summary-row' + (r.highlight ? ' highlight' : '') + '">' +
+        '<span class="exp-sum-label">' + r.label + '</span>' +
+        '<span class="exp-sum-val">' + r.value + '</span>' +
+      '</div>';
+    }).join('');
+    var noteRows = data.notes.map(function(n){
+      return '<div class="exp-note-row">' + n + '</div>';
+    }).join('');
+
+    body.innerHTML =
+      '<div class="exp-table-wrap">' +
+        '<table class="exp-table">' +
+          '<thead><tr><th>S.No</th><th>Expense Item</th><th>Amount</th></tr></thead>' +
+          '<tbody>' + rows + '</tbody>' +
+          '<tfoot><tr><td colspan="2">Total Expenses</td><td>' + fmt(data.total) + '</td></tr></tfoot>' +
+        '</table>' +
+      '</div>' +
+      '<div class="exp-summary"><div class="exp-summary-title">📊 Summary — ' + year + '</div>' + sumRows + '</div>' +
+      (data.notes.length ? '<div class="exp-note"><div class="exp-note-title">⚠ Notes</div>' + noteRows + '</div>' : '');
+  }
+
+  document.getElementById('expensesModalBg').classList.add('open');
+}
+function closeExpenses(){
+  document.getElementById('expensesModalBg').classList.remove('open');
+}
+function bgCloseExp(e){
+  if(e.target === document.getElementById('expensesModalBg')) closeExpenses();
+}
 
 /* ─── BUILD CARDS ─── */
 function initials(name){
@@ -602,13 +1131,14 @@ function sendMail(){
     '\nPhone: ' + phone +
     (insta ? '\nInstagram: @' + insta.replace('@','') : '')
   );
-  window.location.href = 'mailto:thugsofjaladanki@gmail.com?subject=' + sub + '&body=' + body;
+  window.location.href = 'mailto:sivalayamyouth@gmail.com?subject=' + sub + '&body=' + body;
   closeModal();
 }
 
-/* ─── SCROLL TOP ─── */
+/* ─── SCROLL BTN ─── */
 window.addEventListener('scroll', function(){
-  document.getElementById('scrollBtn').style.display = window.scrollY > 250 ? 'flex' : 'none';
+  var btn = document.getElementById('scrollBtn');
+  btn.style.display = window.scrollY > 300 ? 'flex' : 'none';
 });
 </script>
 </body>
